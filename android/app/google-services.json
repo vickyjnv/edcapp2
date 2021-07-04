@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "332743448726",
+    "project_id": "edcapp-a3992",
+    "storage_bucket": "edcapp-a3992.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332743448726:android:8a0ca98d27ab380b11cab7",
+        "android_client_info": {
+          "package_name": "com.example.edcapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332743448726-u2ri4ssoo4ga65bjmkcj762ms4aj5iul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.edcapp",
+            "certificate_hash": "1b4f31dc26a866561f37baf41ed948c31300ea67"
+          }
+        },
+        {
+          "client_id": "332743448726-1n6lsotjiq1lih31bk5qjt3e0sh8rvpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_bpznkALMCiHmVnC6pD8A_m-EQjOJ7yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332743448726-1n6lsotjiq1lih31bk5qjt3e0sh8rvpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

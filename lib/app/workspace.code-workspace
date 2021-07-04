@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"name": "images",
+		"path": "..\\..\\..\\..\\images"
+	},
+	{
+		"name": "timetrackerapp",
+		"path": "..\\.."
+	}
+],
+  "settings": {}
+}
