@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  simple_url_preview: ^0.1.10
+  url_launcher: ^5.5.0
   firebase_core: 0.5.1
   firebase_auth: 0.18.2
   google_sign_in: 4.5.6
@@ -47,6 +49,13 @@ flutter:
    - images/images/edc-logo.png
    - images/images/google-logo.png
    - images/images/facebook-logo.png
+   - images/images/img1.jpg
+   - images/images/img2.jpg
+   - images/images/img3.jpg
+   - images/images/img4.jpg
+   - images/images/img5.jpg
+   - images/images/img6.jpg
+   - images/images/img7.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

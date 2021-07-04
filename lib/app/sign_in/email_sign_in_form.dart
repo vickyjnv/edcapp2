@@ -17,27 +17,35 @@ class EmailSignInForm extends StatefulWidget {
 class _EmailSignInFormState extends State<EmailSignInForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String get _email=>_emailController.text;
-  String get _password=>_passwordController.text;
+  final FocusNode _emailFocusNode=FocusNode();
+  final FocusNode _passwordFocusNode=FocusNode();
+  String get _email => _emailController.text;
+  String get _password => _passwordController.text;
   EmailSignInFormType _formType = EmailSignInFormType.signIn;
 
-  void _submit() async{
+  void _submit() async {
 //todo print email
-  try {
-    if (_formType == EmailSignInFormType.signIn) {
-      await widget.auth.signInWithEmailAndPassword(_email, _password);
-    } else {
-      await widget.auth.createUserWithEmailAndPassword(_email, _password);
+    try {
+      if (_formType == EmailSignInFormType.signIn) {
+        await widget.auth.signInWithEmailAndPassword(_email, _password);
+      } else {
+        await widget.auth.createUserWithEmailAndPassword(_email, _password);
+      }
+      Navigator.of(context).pop();
+    } catch (e) {
+      print(e.toString());
     }
-    Navigator.of(context).pop();
-  }catch(e){
-    print(e.toString());
-  }
   }
 
-  void _toggleFormType(){
+  void _emailEditingComplete(){
+    FocusScope.of(context).requestFocus(_passwordFocusNode);
+  }
+
+  void _toggleFormType() {
     setState(() {
-      _formType=_formType==EmailSignInFormType.signIn?EmailSignInFormType.register:EmailSignInFormType.signIn;
+      _formType = _formType == EmailSignInFormType.signIn
+          ? EmailSignInFormType.register
+          : EmailSignInFormType.signIn;
     });
     _emailController.clear();
     _passwordController.clear();
@@ -52,20 +60,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         ? 'need an account? Register'
         : 'have an account?sign in';
     return [
-      TextField(
-        controller: _emailController,
-        decoration:
-            InputDecoration(labelText: 'Email', hintText: "test@test.com"),
-        // onChanged: (value)=>email=value,
-      ),
+      _buildEmailTextField(),
       SizedBox(height: 8.0),
-      TextField(
-        controller: _passwordController,
-        decoration: InputDecoration(
-          labelText: 'password',
-        ),
-        obscureText: true,
-      ),
+      _buildPasswordTextField(),
       SizedBox(height: 8.0),
       FormSubmitButton(
         text: primaryText,
@@ -76,6 +73,33 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         onPressed: _toggleFormType,
       ),
     ];
+  }
+
+  TextField _buildPasswordTextField() {
+    return TextField(
+      controller: _passwordController,
+      focusNode: _passwordFocusNode,
+      decoration: InputDecoration(
+        labelText: 'password',
+      ),
+      obscureText: true,
+      textInputAction: TextInputAction.done,
+      onEditingComplete: _submit,
+    );
+  }
+
+  TextField _buildEmailTextField() {
+    return TextField(
+      controller: _emailController,
+      focusNode: _emailFocusNode,
+      decoration:
+          InputDecoration(labelText: 'Email', hintText: "test@test.com"),
+      autocorrect: false,
+      keyboardType: TextInputType.emailAddress,
+      textInputAction: TextInputAction.next,
+      onEditingComplete: _emailEditingComplete,
+      // onChanged: (value)=>email=value,
+    );
   }
 
   @override
